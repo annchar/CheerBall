@@ -1,11 +1,15 @@
-package com.azaless.cheerball
+package com.azaless.cheerball.view.ui
 
 import android.content.res.Configuration
 import android.os.Bundle
+import android.support.design.widget.NavigationView
 import android.support.v4.widget.DrawerLayout
 import android.support.v7.app.ActionBarDrawerToggle
 import android.support.v7.app.AppCompatActivity
 import android.view.MenuItem
+import androidx.navigation.Navigation
+import androidx.navigation.ui.setupWithNavController
+import com.azaless.cheerball.R
 
 class MainActivity : AppCompatActivity() {
 	private lateinit var drawerLayout: DrawerLayout
@@ -31,7 +35,8 @@ class MainActivity : AppCompatActivity() {
 		drawerToggle = ActionBarDrawerToggle(this, drawerLayout, R.string.drawer_open, R.string.drawer_close)
 		drawerLayout.addDrawerListener(drawerToggle)
 
-//		val navController =
+		val navController = Navigation.findNavController(this, R.id.main_fragment)
+		findViewById<NavigationView>(R.id.navigation_view).setupWithNavController(navController)
 	}
 
 	override fun onOptionsItemSelected(item: MenuItem?): Boolean {
