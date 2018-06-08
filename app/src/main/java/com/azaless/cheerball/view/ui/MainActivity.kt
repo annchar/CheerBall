@@ -13,6 +13,7 @@ import androidx.navigation.Navigation
 import androidx.navigation.ui.setupWithNavController
 import com.azaless.cheerball.R
 import com.azaless.cheerball.view.ui.groupsball.GroupsBallFragment
+import com.azaless.cheerball.view.ui.team.TeamFragment
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 	private lateinit var drawerLayout: DrawerLayout
@@ -64,21 +65,20 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 	}
 
 	override fun onNavigationItemSelected(item: MenuItem): Boolean {
-		var fragment : Fragment? = null
-		when(item.itemId){
+		val fragment : Fragment = when(item.itemId){
 			R.id.nav_groups -> {
-				fragment = GroupsBallFragment.newInstance()
+				GroupsBallFragment.newInstance()
 			}
 			R.id.nav_all_teams -> {
-
+				TeamFragment.newInstance()
 			}
 			else -> {
-				fragment = MainFragment.newInstance()
+				MainFragment.newInstance()
 			}
 
 		}
 
-		fragment?.let {
+		fragment.let {
 			supportFragmentManager.beginTransaction()
 				.replace(R.id.main_fragment, fragment)
 				.addToBackStack(null)
