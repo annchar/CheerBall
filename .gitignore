@@ -12,3 +12,5 @@
 \.gradle/4\.6/taskHistory/taskHistory\.lock
 
 \.gradle/buildOutputCleanup/buildOutputCleanup\.lock
+
+\.idea/navEditor\.xml
