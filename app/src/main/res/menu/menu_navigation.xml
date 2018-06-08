@@ -1,11 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <item
-        android:id="@+id/text_groups"
-        android:title="@string/navigator_text_groups"/>
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_home"
+            android:title="@string/navigator_text_home"/>
 
-    <item
-        android:id="@+id/text_all_teams"
-        android:title="@string/navigator_text_all_teams"/>
+        <item
+            android:id="@+id/nav_groups"
+            android:title="@string/navigator_text_groups"/>
+
+        <item
+            android:id="@+id/nav_all_teams"
+            android:title="@string/navigator_text_all_teams"/>
+    </group>
 
 </menu>

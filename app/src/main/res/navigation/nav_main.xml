@@ -7,6 +7,15 @@
     <fragment
         android:id="@+id/main_fragment"
         android:name="com.azaless.cheerball.view.ui.MainFragment"
-        tools:layout="@layout/fragment_main" />
+        tools:layout="@layout/fragment_main" >
+        <action
+            android:id="@+id/action_main_fragment_to_groups_ball_fragment"
+            app:destination="@id/groups_ball_fragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/groups_ball_fragment"
+        android:name="com.azaless.cheerball.view.ui.groupsball.GroupsBallFragment"
+        tools:layout="@layout/fragment_groups_ball" />
 
 </navigation>

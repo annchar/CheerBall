@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">CheerBall</string>
+    <string name="navigator_text_home">Home</string>
     <string name="navigator_text_groups">Groups</string>
     <string name="navigator_text_all_teams">All Teams</string>
     <string name="navigation_drawer_header_content_description">FIFA WORLD CUP RUSSIA 2018</string>
