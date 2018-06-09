@@ -14,3 +14,7 @@
 \.gradle/buildOutputCleanup/buildOutputCleanup\.lock
 
 \.idea/navEditor\.xml
+
+app/app\.iml
+
+CheerBall\.iml
