@@ -24,6 +24,8 @@ buildscript {
         runnerVersion = '1.0.1'
         supportLibraryVersion = '27.1.1'
         workVersion = '1.0.0-alpha02'
+        daggerVersion = '2.16'
+        rxjavaVersion = '2.2.0'
     }
 
     repositories {
