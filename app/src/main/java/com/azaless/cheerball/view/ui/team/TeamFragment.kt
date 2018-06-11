@@ -39,7 +39,7 @@ class TeamFragment: Fragment() {
 	override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 		super.onViewCreated(view, savedInstanceState)
 
-		val factory = InjectorUtils.provideTeamViewModelFactory(mContext, "808", "Brazill")
+		val factory = InjectorUtils.provideTeamViewModelFactory(mContext, teamId, teamName)
 		teamViewModel = ViewModelProviders.of(this, factory).get(TeamViewModel::class.java)
 		viewDataBinding.apply {
 
