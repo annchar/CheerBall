@@ -6,10 +6,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import com.azaless.cheerball.R
-import com.azaless.cheerball.view.model.PlayerModel
+import com.azaless.cheerball.view.model.Player
 
 class PlayerListAdapter : RecyclerView.Adapter<PlayerListAdapter.ViewHolder>(){
-	var values: List<PlayerModel> = ArrayList(0)
+	var values: List<Player> = ArrayList(0)
 		set(items) {
 			field = items
 			notifyDataSetChanged()

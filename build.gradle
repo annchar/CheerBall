@@ -12,7 +12,7 @@ buildscript {
         constraintLayoutVersion = '1.1.1'
         dataBindingVersion = '3.0.1'
         espressoVersion = '3.0.1'
-        glideVersion = '4.4.0'
+        glideVersion = '4.7.1'
         gradleVersion = '3.2.0-alpha16'
         gsonVersion = '2.8.2'
         junitVersion = '4.12'
@@ -21,11 +21,19 @@ buildscript {
         kotlinVersion = '1.2.41'
         ktxVersion = '0.3'
         roomVersion = '1.1.0'
-        runnerVersion = '1.0.1'
+        runnerVersion = '1.0.2'
         supportLibraryVersion = '27.1.1'
         workVersion = '1.0.0-alpha02'
         daggerVersion = '2.16'
-        rxjavaVersion = '2.2.0'
+        rxKotlinVersion = '2.2.0'
+        rxAndroidVersion = '2.0.2'
+        retrofitVersion = '2.4.0'
+        timberVersion = '4.7.0'
+        okhttpVersion = '3.10.0'
+        persistentCookieJarVersion = 'v1.0.1'
+        autoValueVersion = '1.6.1'
+        autoValueGsonVersion = '0.8.0'
+        autoValueParcelVersion = '0.2.6'
     }
 
     repositories {
@@ -45,6 +53,7 @@ allprojects {
     repositories {
         google()
         jcenter()
+        maven { url "https://jitpack.io" }
     }
 }
 

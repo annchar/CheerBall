@@ -70,7 +70,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 				GroupsBallFragment.newInstance()
 			}
 			R.id.nav_all_teams -> {
-				TeamFragment.newInstance("808", "Brazill")
+				TeamFragment.newInstance(808, "Brazill")
 			}
 			else -> {
 				MainFragment.newInstance()
