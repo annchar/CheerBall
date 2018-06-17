@@ -22,6 +22,7 @@ class TeamDetailViewModel(private val cheerBallDataRepository: CheerBallDataRepo
 
 	init {
 		compositeDisposable.clear()
+
 		val teamDisposable = cheerBallDataRepository.getTeam(teamId)
 			.observeOn(AndroidSchedulers.mainThread())
 			.subscribeOn(Schedulers.io())
@@ -34,6 +35,7 @@ class TeamDetailViewModel(private val cheerBallDataRepository: CheerBallDataRepo
 			.subscribeWith(PlayersObserver())
 		compositeDisposable.add(playersDisposable)
 	}
+
 	fun getFlagURL(): LiveData<String> {
 		return flagURL
 	}
@@ -50,14 +52,14 @@ class TeamDetailViewModel(private val cheerBallDataRepository: CheerBallDataRepo
 		compositeDisposable.dispose()
 	}
 
-	inner class TeamObserver : DefaultObserver<Team>() {
+	private inner class TeamObserver : DefaultObserver<Team>() {
 		override fun onNext(t: Team) {
 			team.value = t
 			flagURL.value = t.crestUrl
 		}
 	}
 
-	inner class PlayersObserver : DefaultObserver<Players>() {
+	private inner class PlayersObserver : DefaultObserver<Players>() {
 		override fun onNext(t: Players) {
 			players.value = t.players
 		}

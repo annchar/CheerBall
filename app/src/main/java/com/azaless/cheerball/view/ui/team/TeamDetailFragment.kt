@@ -18,8 +18,10 @@ import com.azaless.cheerball.glide.GlideApp
 import com.azaless.cheerball.glide.SvgSoftwareLayerSetter
 import com.azaless.cheerball.util.InjectorUtils
 import com.azaless.cheerball.view.adapter.PlayerListAdapter
+import com.azaless.cheerball.view.model.Team
 import com.azaless.cheerball.viewmodels.TeamDetailViewModel
 import com.bumptech.glide.RequestBuilder
+import com.bumptech.glide.request.RequestOptions
 import timber.log.Timber
 
 
@@ -58,6 +60,9 @@ class TeamDetailFragment : Fragment() {
 	override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 		super.onViewCreated(view, savedInstanceState)
 
+		val factory = InjectorUtils.provideTeamViewModelFactory(mContext, teamId, teamName)
+		teamDetailViewModel = ViewModelProviders.of(this, factory).get(TeamDetailViewModel::class.java)
+
 		val playerListAdapter = PlayerListAdapter()
 		view.findViewById<RecyclerView>(R.id.recyclerViewPlayer).adapter = playerListAdapter
 		subscribeUi(playerListAdapter)
@@ -69,25 +74,26 @@ class TeamDetailFragment : Fragment() {
 	}
 
 	private fun subscribeUi(adapter: PlayerListAdapter) {
-		val factory = InjectorUtils.provideTeamViewModelFactory(mContext, teamId, teamName)
-		teamDetailViewModel = ViewModelProviders.of(this, factory).get(TeamDetailViewModel::class.java)
-		viewDataBinding.apply {
-			viewModel = teamDetailViewModel
-		}
-//		teamDetailViewModel.getTeam()
-//			.observe(this, Observer { result ->
-//				result?.let {
-//					showDetailFlag(it)
-//
-//				}
-//			})
-//
-//		teamDetailViewModel.getFlagURL()
-//			.observe(this, Observer { result ->
-//				result?.let {
-//					showImgFlag(it)
-//				}
-//			})
+//		val factory = InjectorUtils.provideTeamViewModelFactory(mContext, teamId, teamName)
+//		teamDetailViewModel = ViewModelProviders.of(this, factory).get(TeamDetailViewModel::class.java)
+		// TODO: ถามว่า มัน set ลงใน model ได้ไหม แล้วget ค่ามาshow ผ่าน ui
+//		viewDataBinding.apply {
+//			viewModel = teamDetailViewModel
+//		}
+
+		teamDetailViewModel.getTeam()
+			.observe(this, Observer { result ->
+				result?.let {
+					showToolBar(it)
+				}
+			})
+
+		teamDetailViewModel.getFlagURL()
+			.observe(this, Observer { result ->
+				result?.let {
+					showImgFlag(it)
+				}
+			})
 
 		teamDetailViewModel.getPlayers().observe(this, Observer { players ->
 			Timber.e("result -> $players")
@@ -97,23 +103,23 @@ class TeamDetailFragment : Fragment() {
 
 	}
 
-//	private fun showDetailFlag(team: Team) {
-//		viewDataBinding.apply {
-//			textViewFlagName.text = team.name
-//		}
-//	}
+	private fun showToolBar(team: Team) {
+		viewDataBinding.apply {
+			toolbarLayout.title = team.name
+		}
+	}
 
-//	private fun showImgFlag(link: String) {
-//		viewDataBinding.apply {
-//			val imgOptions = RequestOptions()
-//				.fitCenter()
-//				.override(500, 250)
-//
-//			requestBuilder.load(link)
-//				.apply(imgOptions)
-//				.into(imgFlag)
-//		}
-//	}
+	private fun showImgFlag(link: String) {
+		viewDataBinding.apply {
+			val imgOptions = RequestOptions()
+				.fitCenter()
+				.override(imgFlag.width, imgFlag.height)
+
+			requestBuilder.load(link)
+				.apply(imgOptions)
+				.into(imgFlag)
+		}
+	}
 
 	companion object {
 		const val ARG_TEAM_ID = "team_id"

@@ -4,17 +4,16 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <data>
-        <variable
-            name="viewModel"
-            type="com.azaless.cheerball.viewmodels.TeamDetailViewModel" />
-    </data>
+    <!--<data>-->
+        <!--<variable-->
+            <!--name="viewModel"-->
+            <!--type="com.azaless.cheerball.viewmodels.TeamDetailViewModel" />-->
+    <!--</data>-->
 
     <android.support.design.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fitsSystemWindows="true"
-        tools:context="com.google.samples.apps.sunflower.PlantDetailActivity"
         tools:ignore="MergeRootFrame">
 
         <android.support.design.widget.AppBarLayout
@@ -25,17 +24,16 @@
             android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
             <android.support.design.widget.CollapsingToolbarLayout
-                android:id="@+id/toolbar_layout"
+                android:id="@+id/toolbarLayout"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:fitsSystemWindows="true"
                 app:contentScrim="?attr/colorPrimary"
                 app:layout_scrollFlags="scroll|exitUntilCollapsed"
-                app:title="@{viewModel.team.name}"
                 app:toolbarId="@+id/toolbar">
 
                 <ImageView
-                    android:id="@+id/detail_image"
+                    android:id="@+id/imgFlag"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:fitsSystemWindows="true"
@@ -43,7 +41,7 @@
                     app:layout_collapseMode="parallax" />
 
                 <android.support.v7.widget.Toolbar
-                    android:id="@+id/detail_toolbar"
+                    android:id="@+id/detailToolbar"
                     android:layout_width="match_parent"
                     android:layout_height="?attr/actionBarSize"
                     app:layout_collapseMode="pin"
@@ -54,7 +52,7 @@
         </android.support.design.widget.AppBarLayout>
 
         <android.support.v4.widget.NestedScrollView
-            android:id="@+id/plant_detail_scrollview"
+            android:id="@+id/players_scrollview"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:layout_behavior="@string/appbar_scrolling_view_behavior">
