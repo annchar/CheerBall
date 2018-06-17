@@ -12,8 +12,8 @@ import android.view.MenuItem
 import androidx.navigation.Navigation
 import androidx.navigation.ui.setupWithNavController
 import com.azaless.cheerball.R
+import com.azaless.cheerball.view.ui.allteam.AllTeamFragment
 import com.azaless.cheerball.view.ui.groupsball.GroupsBallFragment
-import com.azaless.cheerball.view.ui.team.TeamFragment
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 	private lateinit var drawerLayout: DrawerLayout
@@ -70,7 +70,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 				GroupsBallFragment.newInstance()
 			}
 			R.id.nav_all_teams -> {
-				TeamFragment.newInstance(808, "Brazill")
+				AllTeamFragment.newInstance()
 			}
 			else -> {
 				MainFragment.newInstance()

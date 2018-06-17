@@ -5,25 +5,34 @@ import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.ViewModel
 import com.azaless.cheerball.data.CheerBallDataRepository
 import com.azaless.cheerball.data.DefaultObserver
+import com.azaless.cheerball.view.model.Player
+import com.azaless.cheerball.view.model.Players
 import com.azaless.cheerball.view.model.Team
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
-import timber.log.Timber
 
-class TeamViewModel(private val cheerBallDataRepository: CheerBallDataRepository,
-                    private val teamId: Int,
-                    private val teamName: String) : ViewModel() {
+class TeamDetailViewModel(private val cheerBallDataRepository: CheerBallDataRepository,
+                          private val teamId: Int,
+                          private val teamName: String) : ViewModel() {
 	private val flagURL = MutableLiveData<String>()
 	private val team = MutableLiveData<Team>()
+	private val players = MutableLiveData<List<Player>>()
 	private val compositeDisposable: CompositeDisposable = CompositeDisposable()
 
 	init {
-		val disposable = cheerBallDataRepository.getTeam(teamId)
+		compositeDisposable.clear()
+		val teamDisposable = cheerBallDataRepository.getTeam(teamId)
 			.observeOn(AndroidSchedulers.mainThread())
 			.subscribeOn(Schedulers.io())
 			.subscribeWith(TeamObserver())
-		compositeDisposable.add(disposable)
+		compositeDisposable.add(teamDisposable)
+
+		val playersDisposable = cheerBallDataRepository.getPlayer(teamId)
+			.observeOn(AndroidSchedulers.mainThread())
+			.subscribeOn(Schedulers.io())
+			.subscribeWith(PlayersObserver())
+		compositeDisposable.add(playersDisposable)
 	}
 	fun getFlagURL(): LiveData<String> {
 		return flagURL
@@ -33,11 +42,24 @@ class TeamViewModel(private val cheerBallDataRepository: CheerBallDataRepository
 		return team
 	}
 
+	fun getPlayers(): LiveData<List<Player>> {
+		return players
+	}
+
+	fun disposable() {
+		compositeDisposable.dispose()
+	}
+
 	inner class TeamObserver : DefaultObserver<Team>() {
 		override fun onNext(t: Team) {
-			Timber.e("Result : $t")
 			team.value = t
 			flagURL.value = t.crestUrl
+		}
+	}
+
+	inner class PlayersObserver : DefaultObserver<Players>() {
+		override fun onNext(t: Players) {
+			players.value = t.players
 		}
 	}
 }

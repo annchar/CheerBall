@@ -7,6 +7,7 @@ import android.databinding.DataBindingUtil
 import android.graphics.drawable.PictureDrawable
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
@@ -17,15 +18,14 @@ import com.azaless.cheerball.glide.GlideApp
 import com.azaless.cheerball.glide.SvgSoftwareLayerSetter
 import com.azaless.cheerball.util.InjectorUtils
 import com.azaless.cheerball.view.adapter.PlayerListAdapter
-import com.azaless.cheerball.view.model.Team
-import com.azaless.cheerball.viewmodels.TeamViewModel
+import com.azaless.cheerball.viewmodels.TeamDetailViewModel
 import com.bumptech.glide.RequestBuilder
-import com.bumptech.glide.request.RequestOptions
+import timber.log.Timber
 
 
-class TeamFragment : Fragment() {
+class TeamDetailFragment : Fragment() {
 	private lateinit var viewDataBinding: FragmentTeamBinding
-	private lateinit var teamViewModel: TeamViewModel
+	private lateinit var teamDetailViewModel: TeamDetailViewModel
 
 	private var teamId: Int = 0
 	private lateinit var teamName: String
@@ -45,77 +45,86 @@ class TeamFragment : Fragment() {
 		viewDataBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_team, container, false)
 		mContext = context ?: return viewDataBinding.root
 
+
+		val appCompatActivity = requireActivity() as AppCompatActivity
+		appCompatActivity.setSupportActionBar(viewDataBinding.detailToolbar)
+
+		// Show the Up button in the action bar.
+		appCompatActivity.supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
 		return viewDataBinding.root
 	}
 
 	override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 		super.onViewCreated(view, savedInstanceState)
 
-		val factory = InjectorUtils.provideTeamViewModelFactory(mContext, teamId, teamName)
-		teamViewModel = ViewModelProviders.of(this, factory).get(TeamViewModel::class.java)
-		teamViewModel.getTeam()
-			.observe(this, Observer { result ->
-				result?.let {
-					showDetailFlag(it)
-				}
-			})
-
-		teamViewModel.getFlagURL()
-			.observe(this, Observer { result ->
-				result?.let {
-					showImgFlag(it)
-				}
-			})
-
 		val playerListAdapter = PlayerListAdapter()
 		view.findViewById<RecyclerView>(R.id.recyclerViewPlayer).adapter = playerListAdapter
 		subscribeUi(playerListAdapter)
 	}
 
-	private fun showImgFlag(link: String) {
-		viewDataBinding.apply {
-			val imgOptions = RequestOptions()
-				.fitCenter()
-				.override(500, 250)
-
-			requestBuilder.load(link)
-				.apply(imgOptions)
-				.into(imgFlag)
-		}
+	override fun onDestroyView() {
+		super.onDestroyView()
+		teamDetailViewModel.disposable()
 	}
 
 	private fun subscribeUi(adapter: PlayerListAdapter) {
-//		viewModel.getPlants().observe(this, Observer { plants ->
-//			if (plants != null) adapter.values = plants
-//		})
+		val factory = InjectorUtils.provideTeamViewModelFactory(mContext, teamId, teamName)
+		teamDetailViewModel = ViewModelProviders.of(this, factory).get(TeamDetailViewModel::class.java)
+		viewDataBinding.apply {
+			viewModel = teamDetailViewModel
+		}
+//		teamDetailViewModel.getTeam()
+//			.observe(this, Observer { result ->
+//				result?.let {
+//					showDetailFlag(it)
+//
+//				}
+//			})
+//
+//		teamDetailViewModel.getFlagURL()
+//			.observe(this, Observer { result ->
+//				result?.let {
+//					showImgFlag(it)
+//				}
+//			})
+
+		teamDetailViewModel.getPlayers().observe(this, Observer { players ->
+			Timber.e("result -> $players")
+			if (players != null)
+				adapter.values = players
+		})
+
 	}
 
-	private fun showDetailFlag(team: Team) {
-		viewDataBinding.apply {
-			textViewFlagName.text = team.name
+//	private fun showDetailFlag(team: Team) {
+//		viewDataBinding.apply {
+//			textViewFlagName.text = team.name
+//		}
+//	}
 
+//	private fun showImgFlag(link: String) {
+//		viewDataBinding.apply {
 //			val imgOptions = RequestOptions()
 //				.fitCenter()
 //				.override(500, 250)
 //
-//			Timber.e("link img : ${team.crestUrl}")
-//			GlideApp.with(imgFlag.context)
-//				.load(team.crestUrl)
+//			requestBuilder.load(link)
 //				.apply(imgOptions)
 //				.into(imgFlag)
-		}
-	}
+//		}
+//	}
 
 	companion object {
 		const val ARG_TEAM_ID = "team_id"
 		const val ARG_TEAM_NAME = "team_name"
 
-		fun newInstance(teamId: Int, teamName: String): TeamFragment {
+		fun newInstance(teamId: Int, teamName: String): TeamDetailFragment {
 			val bundle = Bundle().apply {
 				putInt(ARG_TEAM_ID, teamId)
 				putString(ARG_TEAM_NAME, teamName)
 			}
-			return TeamFragment().apply { arguments = bundle }
+			return TeamDetailFragment().apply { arguments = bundle }
 		}
 	}
 }

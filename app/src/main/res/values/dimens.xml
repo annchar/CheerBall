@@ -7,4 +7,7 @@
     <dimen name="margin_small">8dp</dimen>
     <dimen name="margin_more_small">12dp</dimen>
     <dimen name="margin_medium">16dp</dimen>
+
+    <dimen name="app_bar_height">200dp</dimen>
+
 </resources>

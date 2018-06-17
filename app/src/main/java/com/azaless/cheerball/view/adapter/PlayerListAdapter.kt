@@ -26,8 +26,8 @@ class PlayerListAdapter : RecyclerView.Adapter<PlayerListAdapter.ViewHolder>(){
 		holder.apply {
 			textViewName.text = values[position].name
 			textViewPosition.text = values[position].position
-			textViewNumber.text = values[position].jerseyNumber
-			textViewAge.text = values[position].age
+			textViewNumber.text = values[position].jerseyNumber.toString()
+//			textViewAge.text = values[position].
 			textViewDateOfBirth.text = values[position].dateOfBirth
 		}
 	}

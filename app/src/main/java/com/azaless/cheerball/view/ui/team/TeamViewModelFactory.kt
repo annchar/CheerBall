@@ -19,7 +19,7 @@ package com.azaless.cheerball.view.ui.team
 import android.arch.lifecycle.ViewModel
 import android.arch.lifecycle.ViewModelProvider
 import com.azaless.cheerball.data.CheerBallDataRepository
-import com.azaless.cheerball.viewmodels.TeamViewModel
+import com.azaless.cheerball.viewmodels.TeamDetailViewModel
 
 class TeamViewModelFactory(
     private val cheerBallDataRepository: CheerBallDataRepository,
@@ -29,7 +29,7 @@ class TeamViewModelFactory(
 
     @Suppress("UNCHECKED_CAST")
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
-        return TeamViewModel(cheerBallDataRepository, teamId, teamName) as T
+        return TeamDetailViewModel(cheerBallDataRepository, teamId, teamName) as T
     }
 
 }
