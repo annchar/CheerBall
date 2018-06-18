@@ -21,7 +21,7 @@ import android.arch.lifecycle.ViewModelProvider
 import com.azaless.cheerball.data.CheerBallDataRepository
 import com.azaless.cheerball.viewmodels.TeamDetailViewModel
 
-class TeamViewModelFactory(
+class    TeamDetailViewModelFactory(
     private val cheerBallDataRepository: CheerBallDataRepository,
     private val teamId: Int,
     private val teamName: String

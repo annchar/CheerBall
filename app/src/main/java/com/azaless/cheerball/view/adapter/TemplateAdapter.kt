@@ -8,7 +8,7 @@ import android.widget.TextView
 import com.azaless.cheerball.R
 import com.azaless.cheerball.view.model.Player
 
-class PlayerListAdapter : RecyclerView.Adapter<PlayerListAdapter.ViewHolder>(){
+class TemplateAdapter : RecyclerView.Adapter<TemplateAdapter.ViewHolder>(){
 	var values: List<Player> = ArrayList(0)
 		set(items) {
 			field = items
@@ -25,10 +25,6 @@ class PlayerListAdapter : RecyclerView.Adapter<PlayerListAdapter.ViewHolder>(){
 	override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 		holder.apply {
 			textViewName.text = values[position].name
-			textViewPosition.text = values[position].position
-			textViewNumber.text = values[position].jerseyNumber.toString()
-//			textViewAge.text = values[position].
-			textViewDateOfBirth.text = values[position].dateOfBirth
 		}
 	}
 

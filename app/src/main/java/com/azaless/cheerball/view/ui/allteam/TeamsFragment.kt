@@ -1,42 +1,64 @@
 package com.azaless.cheerball.view.ui.allteam
 
-import android.content.Intent
+import android.arch.lifecycle.Observer
+import android.arch.lifecycle.ViewModelProviders
+import android.content.Context
+import android.databinding.DataBindingUtil
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.azaless.cheerball.R
-import com.azaless.cheerball.view.ui.team.TeamDetailActivity
+import com.azaless.cheerball.databinding.FragmentTeamsBinding
+import com.azaless.cheerball.util.InjectorUtils
+import com.azaless.cheerball.view.adapter.TeamListAdapter
 import com.azaless.cheerball.view.ui.team.TeamDetailFragment
-import kotlinx.android.synthetic.main.fragment_all_team.*
-import timber.log.Timber
+import com.azaless.cheerball.viewmodels.TeamsViewModel
 
-class AllTeamFragment: Fragment() {
-//	private lateinit var viewModel: MainViewModel
+class TeamsFragment: Fragment() {
+	private lateinit var viewDataBinding: FragmentTeamsBinding
+	private lateinit var mTeamsViewModel: TeamsViewModel
+	private lateinit var mContext: Context
+
+	private var eventId: Int = 0
 
 	override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-		return inflater.inflate(R.layout.fragment_all_team, container, false)
+		eventId = requireNotNull(arguments).getInt(TeamDetailFragment.ARG_TEAM_ID)
+
+		viewDataBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_teams, container, false)
+		mContext = context ?: return viewDataBinding.root
+		return viewDataBinding.root
 	}
 
 	override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 		super.onViewCreated(view, savedInstanceState)
-		//TODO: Change view model
-//		viewModel = ViewModelProviders.of(this).get(MainViewModel::class.java)
-		imgFlag.setOnClickListener{
-			Timber.e("click")
-			val intent = Intent(view.context, TeamDetailActivity::class.java).apply {
-				putExtra(TeamDetailFragment.ARG_TEAM_ID, 808)
-				putExtra(TeamDetailFragment.ARG_TEAM_NAME, "Brazill")
-			}
-			startActivity(intent)
-		}
 
+		val factory = InjectorUtils.provideTeamsViewModelFactory(mContext, eventId)
+		mTeamsViewModel = ViewModelProviders.of(this, factory).get(TeamsViewModel::class.java)
+
+		val teamListAdapter = TeamListAdapter()
+		view.findViewById<RecyclerView>(R.id.recyclerViewTeam).adapter = teamListAdapter
+		subscribeUi(teamListAdapter)
+	}
+
+	private fun subscribeUi(adapter: TeamListAdapter) {
+		mTeamsViewModel.getTeams()
+			.observe(this, Observer { teams ->
+				if (teams != null)
+					teams.teams?.let {
+						adapter.values = it
+					}
+			})
 	}
 
 	companion object {
-		fun newInstance(): AllTeamFragment {
-			return AllTeamFragment().apply {  }
+		fun newInstance(eventId: Int): TeamsFragment {
+			val bundle = Bundle().apply {
+				putInt(TeamDetailFragment.ARG_TEAM_ID, eventId)
+			}
+			return TeamsFragment().apply { arguments = bundle }
 		}
 	}
 }

@@ -1,5 +1,5 @@
 package com.azaless.cheerball.view.model
 
-data class AllTeam(val count: Int?,
-                   val teams: List<Team>?
+data class Teams(val count: Int?,
+                 val teams: List<Team>?
 )

@@ -14,22 +14,20 @@
  * limitations under the License.
  */
 
-package com.azaless.cheerball.view.ui.team
+package com.azaless.cheerball.view.ui.allteam
 
 import android.arch.lifecycle.ViewModel
 import android.arch.lifecycle.ViewModelProvider
 import com.azaless.cheerball.data.CheerBallDataRepository
-import com.azaless.cheerball.viewmodels.TeamDetailViewModel
+import com.azaless.cheerball.viewmodels.TeamsViewModel
 
-class    TeamDetailViewModelFactory(
-    private val cheerBallDataRepository: CheerBallDataRepository,
-    private val teamId: Int,
-    private val teamName: String
-) : ViewModelProvider.NewInstanceFactory() {
+class TeamsViewModelFactory(
+	private val cheerBallDataRepository: CheerBallDataRepository,
+	private val eventId: Int) : ViewModelProvider.NewInstanceFactory() {
 
-    @Suppress("UNCHECKED_CAST")
-    override fun <T : ViewModel> create(modelClass: Class<T>): T {
-        return TeamDetailViewModel(cheerBallDataRepository, teamId, teamName) as T
-    }
+	@Suppress("UNCHECKED_CAST")
+	override fun <T : ViewModel> create(modelClass: Class<T>): T {
+		return TeamsViewModel(cheerBallDataRepository, eventId) as T
+	}
 
 }

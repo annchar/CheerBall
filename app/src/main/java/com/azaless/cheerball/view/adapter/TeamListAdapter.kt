@@ -1,23 +1,46 @@
 package com.azaless.cheerball.view.adapter
 
+import android.content.Intent
+import android.graphics.drawable.PictureDrawable
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import com.azaless.cheerball.R
-import com.azaless.cheerball.view.model.Player
+import com.azaless.cheerball.glide.GlideApp
+import com.azaless.cheerball.glide.SvgSoftwareLayerSetter
+import com.azaless.cheerball.util.AppUtil
+import com.azaless.cheerball.view.model.Team
+import com.azaless.cheerball.view.ui.team.TeamDetailActivity
+import com.azaless.cheerball.view.ui.team.TeamDetailFragment
+import com.bumptech.glide.RequestBuilder
+import com.bumptech.glide.request.RequestOptions
 
-class PlayerListAdapter : RecyclerView.Adapter<PlayerListAdapter.ViewHolder>(){
-	var values: List<Player> = ArrayList(0)
+class TeamListAdapter : RecyclerView.Adapter<TeamListAdapter.ViewHolder>(){
+	var values: List<Team> = ArrayList(0)
 		set(items) {
 			field = items
 			notifyDataSetChanged()
 		}
 
+	private val onClickListener = View.OnClickListener { view ->
+		val item = view.tag as Team
+		val intent = Intent(view.context, TeamDetailActivity::class.java).apply {
+			val link = item.link?.self?.href
+			link?.let {
+				val teamId = AppUtil().getTeamId(it)
+				putExtra(TeamDetailFragment.ARG_TEAM_ID, teamId)
+				putExtra(TeamDetailFragment.ARG_TEAM_NAME, item.name)
+			}
+		}
+		view.context.startActivity(intent)
+	}
+
 	override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
 		return ViewHolder(LayoutInflater.from(parent.context)
-			.inflate(R.layout.list_item_player, parent, false))
+			.inflate(R.layout.list_item_all_team, parent, false))
 	}
 
 	override fun getItemCount() = values.size
@@ -25,18 +48,29 @@ class PlayerListAdapter : RecyclerView.Adapter<PlayerListAdapter.ViewHolder>(){
 	override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 		holder.apply {
 			textViewName.text = values[position].name
-			textViewPosition.text = values[position].position
-			textViewNumber.text = values[position].jerseyNumber.toString()
-//			textViewAge.text = values[position].
-			textViewDateOfBirth.text = values[position].dateOfBirth
+
+			val imgOptions = RequestOptions()
+				.fitCenter()
+				.override(imgFlag.width, imgFlag.height)
+			requestBuilder.load(values[position].crestUrl)
+				.apply(imgOptions)
+				.into(imgFlag)
+
+			with(itemView) {
+				tag = values[position]
+				setOnClickListener(onClickListener)
+			}
 		}
 	}
 
 	class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 		val textViewName: TextView = itemView.findViewById(R.id.textViewName)
-		val textViewPosition: TextView = itemView.findViewById(R.id.textViewPosition)
-		val textViewNumber: TextView = itemView.findViewById(R.id.textViewNumber)
-		val textViewAge: TextView = itemView.findViewById(R.id.textViewAge)
-		val textViewDateOfBirth: TextView = itemView.findViewById(R.id.textViewDateOfBirth)
+		val imgFlag: ImageView = itemView.findViewById(R.id.imgFlag)
+
+		val requestBuilder: RequestBuilder<PictureDrawable>  by lazy {
+			GlideApp.with(itemView.context)
+				.`as`(PictureDrawable::class.java)
+				.listener(SvgSoftwareLayerSetter())
+		}
 	}
 }
