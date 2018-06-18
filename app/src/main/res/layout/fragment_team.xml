@@ -63,7 +63,6 @@
 
                 <android.support.v7.widget.RecyclerView
                     android:id="@+id/recyclerViewPlayer"
-                    android:name="com.azaless.cheerball.view.ui.player.PlayerListFragment"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     app:layoutManager="android.support.v7.widget.LinearLayoutManager"

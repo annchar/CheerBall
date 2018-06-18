@@ -2,6 +2,7 @@ package com.azaless.cheerball.data
 
 import com.azaless.cheerball.view.model.Players
 import com.azaless.cheerball.view.model.Team
+import com.azaless.cheerball.view.model.Teams
 import io.reactivex.Observable
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
@@ -15,6 +16,9 @@ interface CheerBallApi {
 
     @GET("teams/{id}/players")
     fun getPlayers(@Path("id") id: Int): Observable<Players>
+
+    @GET("competitions/{id}/teams")
+    fun getTeams(@Path("id") id: Int): Observable<Teams>
 
     companion object Factory {
         fun create(): CheerBallApi {

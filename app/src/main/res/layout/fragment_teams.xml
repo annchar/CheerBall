@@ -31,7 +31,7 @@
                 app:layout_constraintStart_toStartOf="parent" />
 
             <android.support.v7.widget.RecyclerView
-                android:id="@+id/recyclerViewAllTeam"
+                android:id="@+id/recyclerViewTeams"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 app:layoutManager="android.support.v7.widget.LinearLayoutManager"

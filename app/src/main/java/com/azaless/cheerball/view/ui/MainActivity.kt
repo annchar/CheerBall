@@ -12,7 +12,7 @@ import android.view.MenuItem
 import androidx.navigation.Navigation
 import androidx.navigation.ui.setupWithNavController
 import com.azaless.cheerball.R
-import com.azaless.cheerball.view.ui.allteam.AllTeamFragment
+import com.azaless.cheerball.view.ui.allteam.TeamsFragment
 import com.azaless.cheerball.view.ui.groupsball.GroupsBallFragment
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
@@ -70,7 +70,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 				GroupsBallFragment.newInstance()
 			}
 			R.id.nav_all_teams -> {
-				AllTeamFragment.newInstance()
+				TeamsFragment.newInstance(467)
 			}
 			else -> {
 				MainFragment.newInstance()

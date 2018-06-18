@@ -15,4 +15,9 @@ class AppUtil {
 		val metrics = resources.displayMetrics
 		return pixel / (metrics.densityDpi / 160f)
 	}
+
+	fun getTeamId(link: String): Int {
+		val regex = """([^/]*)${'$'}""".toRegex()
+		return regex.find(link)?.value?.toInt()?: 0
+	}
 }

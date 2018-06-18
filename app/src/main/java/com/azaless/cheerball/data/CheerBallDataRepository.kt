@@ -2,6 +2,7 @@ package com.azaless.cheerball.data
 
 import com.azaless.cheerball.view.model.Players
 import com.azaless.cheerball.view.model.Team
+import com.azaless.cheerball.view.model.Teams
 import io.reactivex.Observable
 
 class CheerBallDataRepository : CheerBallRepository {
@@ -11,6 +12,10 @@ class CheerBallDataRepository : CheerBallRepository {
 
 	override fun getPlayer(teamId: Int): Observable<Players> {
 		return CheerBallApi.create().getPlayers(teamId)
+	}
+
+	override fun getTeams(eventId: Int): Observable<Teams> {
+		return CheerBallApi.create().getTeams(eventId)
 	}
 
 	companion object {
