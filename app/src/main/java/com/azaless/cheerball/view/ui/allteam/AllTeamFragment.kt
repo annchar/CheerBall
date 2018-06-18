@@ -23,7 +23,7 @@ class AllTeamFragment: Fragment() {
 		super.onViewCreated(view, savedInstanceState)
 		//TODO: Change view model
 //		viewModel = ViewModelProviders.of(this).get(MainViewModel::class.java)
-		textViewHead.setOnClickListener{
+		imgFlag.setOnClickListener{
 			Timber.e("click")
 			val intent = Intent(view.context, TeamDetailActivity::class.java).apply {
 				putExtra(TeamDetailFragment.ARG_TEAM_ID, 808)

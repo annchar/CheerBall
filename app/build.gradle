@@ -46,42 +46,41 @@ dependencies {
     implementation "com.android.support:recyclerview-v7:$rootProject.supportLibraryVersion"
     implementation "com.android.support.constraint:constraint-layout:$rootProject.constraintLayoutVersion"
     implementation "com.android.support:design:$rootProject.supportLibraryVersion"
-
     implementation 'com.caverock:androidsvg:1.2.1'
     implementation "com.github.bumptech.glide:glide:$rootProject.glideVersion"
     kapt "com.github.bumptech.glide:compiler:$rootProject.glideVersion"
-//    kapt "android.arch.lifecycle:compiler:1.0.0"
 
+    //    kapt "android.arch.lifecycle:compiler:1.0.0"
     implementation "com.google.code.gson:gson:$rootProject.gsonVersion"
-
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$rootProject.kotlinVersion"
-
     implementation "io.reactivex.rxjava2:rxkotlin:$rootProject.rxKotlinVersion"
     implementation "io.reactivex.rxjava2:rxandroid:$rootProject.rxAndroidVersion"
-
     kapt "com.google.dagger:dagger-compiler:$rootProject.daggerVersion"
     annotationProcessor "com.google.dagger:dagger-android-processor:$rootProject.daggerVersion"
     implementation "com.google.dagger:dagger-android-support:$rootProject.daggerVersion"
     implementation "com.google.dagger:dagger-android:$rootProject.daggerVersion"
     implementation "com.google.dagger:dagger:$rootProject.daggerVersion"
-
     implementation "com.squareup.retrofit2:retrofit:$rootProject.retrofitVersion"
     implementation "com.squareup.retrofit2:converter-gson:$rootProject.retrofitVersion"
     implementation "com.squareup.retrofit2:adapter-rxjava2:$rootProject.retrofitVersion"
-
     implementation "com.jakewharton.timber:timber:$rootProject.timberVersion"
-
     implementation "com.squareup.okhttp3:okhttp:$rootProject.okhttpVersion"
     implementation "com.squareup.okhttp3:logging-interceptor:$rootProject.okhttpVersion"
 
-//    implementation "com.github.franmontiel:PersistentCookieJar:$rootProject.persistentCookieJarVersion"
-//    annotationProcessor "com.google.auto.value:auto-value-annotations:$rootProject.autoValueVersion"
-//    implementation "com.google.auto.value:auto-value:$rootProject.autoValueVersion"
-//    annotationProcessor "com.ryanharter.auto.value:auto-value-gson-annotations:$rootProject.autoValueGsonVersion"
-//    implementation "com.ryanharter.auto.value:auto-value-gson:$rootProject.autoValueGsonVersion"
-//    annotationProcessor "com.ryanharter.auto.value:auto-value-parcel:$rootProject.autoValueParcelVersion"
-//    implementation "com.ryanharter.auto.value:auto-value-parcel:$rootProject.autoValueParcelVersion"
+    //    implementation "com.github.franmontiel:PersistentCookieJar:$rootProject.persistentCookieJarVersion"
 
+    //    annotationProcessor "com.google.auto.value:auto-value-annotations:$rootProject.autoValueVersion"
+
+    //    implementation "com.google.auto.value:auto-value:$rootProject.autoValueVersion"
+
+    //    annotationProcessor "com.ryanharter.auto.value:auto-value-gson-annotations:$rootProject.autoValueGsonVersion"
+
+    //    implementation "com.ryanharter.auto.value:auto-value-gson:$rootProject.autoValueGsonVersion"
+    implementation 'com.android.support:cardview-v7:27.1.1'
+
+    //    annotationProcessor "com.ryanharter.auto.value:auto-value-parcel:$rootProject.autoValueParcelVersion"
+
+    //    implementation "com.ryanharter.auto.value:auto-value-parcel:$rootProject.autoValueParcelVersion"
     testImplementation "junit:junit:$rootProject.junitVersion"
     androidTestImplementation "com.android.support.test:runner:$rootProject.runnerVersion"
     androidTestImplementation "com.android.support.test.espresso:espresso-contrib:$rootProject.espressoVersion"
