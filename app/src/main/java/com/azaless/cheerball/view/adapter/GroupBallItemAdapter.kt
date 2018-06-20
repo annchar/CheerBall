@@ -26,6 +26,7 @@ class GroupBallItemAdapter : RecyclerView.Adapter<GroupBallItemAdapter.ViewHolde
 	override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 		holder.apply {
 			textViewName.text = values[position].team
+			BindingAdapters.loadImage(imgFlag, values[position].crestURI)
 		}
 	}
 

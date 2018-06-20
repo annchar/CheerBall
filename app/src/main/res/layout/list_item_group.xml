@@ -20,7 +20,7 @@
 
             <ImageView
                 android:id="@+id/imgFlag"
-                android:layout_width="150dp"
+                android:layout_width="180dp"
                 android:layout_height="180dp"
                 android:background="@drawable/ic_navigation_drawer_header_logo" />
 
@@ -37,7 +37,9 @@
                     android:layout_centerVertical="true"
                     android:layout_marginLeft="@dimen/margin_small"
                     android:layout_toRightOf="@id/imgFlag"
-                    android:text="GROUP A" />
+                    android:text="GROUP A"
+                    android:textStyle="bold"
+                    android:textSize="16sp"/>
 
                 <TextView
                     android:layout_width="wrap_content"

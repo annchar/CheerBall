@@ -32,7 +32,7 @@ class GroupBallListAdapter : RecyclerView.Adapter<GroupBallListAdapter.ViewHolde
 		with(holder) {
 			value.keys.filterIndexed { index, _ -> index == position }
 				.firstOrNull()?.let { key ->
-					textViewGroupName.text = key.toUpperCase()
+					textViewGroupName.text = "GROUP ${key.toUpperCase()}"
 					val groupList = value[key]
 					val groupBallItemAdapter = GroupBallItemAdapter()
 					groupBallItemAdapter.values = groupList ?: listOf()
