@@ -5,6 +5,7 @@ import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.ViewModel
 import com.azaless.cheerball.data.CheerBallDataRepository
 import com.azaless.cheerball.data.DefaultObserver
+import com.azaless.cheerball.view.adapter.PlayerListAdapter
 import com.azaless.cheerball.view.model.Player
 import com.azaless.cheerball.view.model.Players
 import com.azaless.cheerball.view.model.Team
@@ -20,6 +21,7 @@ class TeamDetailViewModel(private val cheerBallDataRepository: CheerBallDataRepo
 	private val compositeDisposable: CompositeDisposable = CompositeDisposable()
 
 	val teamName = MutableLiveData<String>()
+	val adapter = PlayerListAdapter()
 
 	init {
 		compositeDisposable.clear()

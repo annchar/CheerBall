@@ -2,15 +2,17 @@ package com.azaless.cheerball.view.adapter
 
 import android.databinding.BindingAdapter
 import android.graphics.drawable.PictureDrawable
+import android.support.v7.widget.RecyclerView
 import android.widget.ImageView
 import com.azaless.cheerball.glide.GlideApp
 import com.azaless.cheerball.glide.SvgSoftwareLayerSetter
+import com.azaless.cheerball.view.model.Player
 import com.bumptech.glide.request.RequestOptions
 
 
 
 object BindingAdapters {
-	@BindingAdapter("app:imageUrl")
+	@BindingAdapter("imageUrl")
 	@JvmStatic
 	fun loadImage(imageView: ImageView, imageUrl: String?) {
 		imageUrl?.let {
@@ -27,14 +29,16 @@ object BindingAdapters {
 		}
 	}
 
-//	@BindingAdapter("data")
-//	fun setAdapterData(view: RecyclerView, bindingData: List<Team>, resource: Resources) {
+	@BindingAdapter(value = ["adapterValue", "adapterCustom"], requireAll = true)
+	@JvmStatic
+	fun setAdapterData(view: RecyclerView, bindingData: List<Player>?, adapter: PlayerListAdapter) {
 //		val itemAdapter = TeamListAdapter()
-//		view.adapter = itemAdapter
-//		itemAdapter.values = bindingData
-//
-//		view.adapter.
-//	}
 
+		bindingData?.let {
+			view.adapter = adapter
+			adapter.values = bindingData
+			adapter.notifyDataSetChanged()
+		}
+	}
 }
 
