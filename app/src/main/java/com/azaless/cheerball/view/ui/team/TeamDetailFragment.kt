@@ -1,10 +1,7 @@
 package com.azaless.cheerball.view.ui.team
 
-import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
-import android.content.Context
 import android.databinding.DataBindingUtil
-import android.graphics.drawable.PictureDrawable
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.app.AppCompatActivity
@@ -14,15 +11,9 @@ import android.view.View
 import android.view.ViewGroup
 import com.azaless.cheerball.R
 import com.azaless.cheerball.databinding.FragmentTeamBinding
-import com.azaless.cheerball.glide.GlideApp
-import com.azaless.cheerball.glide.SvgSoftwareLayerSetter
 import com.azaless.cheerball.util.InjectorUtils
 import com.azaless.cheerball.view.adapter.PlayerListAdapter
-import com.azaless.cheerball.view.model.Team
 import com.azaless.cheerball.viewmodels.TeamDetailViewModel
-import com.bumptech.glide.RequestBuilder
-import com.bumptech.glide.request.RequestOptions
-import timber.log.Timber
 
 
 class TeamDetailFragment : Fragment() {
@@ -31,27 +22,16 @@ class TeamDetailFragment : Fragment() {
 
 	private var teamId: Int = 0
 	private lateinit var teamName: String
-	private lateinit var mContext: Context
-
-
-	private val requestBuilder: RequestBuilder<PictureDrawable>  by lazy {
-		GlideApp.with(this)
-			.`as`(PictureDrawable::class.java)
-			.listener(SvgSoftwareLayerSetter())
-	}
 
 	override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 		teamId = requireNotNull(arguments).getInt(ARG_TEAM_ID)
 		teamName = requireNotNull(arguments).getString(ARG_TEAM_NAME)
 
 		viewDataBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_team, container, false)
-		mContext = context ?: return viewDataBinding.root
-
+		viewDataBinding.setLifecycleOwner(this)
 
 		val appCompatActivity = requireActivity() as AppCompatActivity
 		appCompatActivity.setSupportActionBar(viewDataBinding.detailToolbar)
-
-		// Show the Up button in the action bar.
 		appCompatActivity.supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
 		return viewDataBinding.root
@@ -60,12 +40,13 @@ class TeamDetailFragment : Fragment() {
 	override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 		super.onViewCreated(view, savedInstanceState)
 
-		val factory = InjectorUtils.provideTeamViewModelFactory(mContext, teamId, teamName)
-		teamDetailViewModel = ViewModelProviders.of(this, factory).get(TeamDetailViewModel::class.java)
-
 		val playerListAdapter = PlayerListAdapter()
 		view.findViewById<RecyclerView>(R.id.recyclerViewPlayer).adapter = playerListAdapter
-		subscribeUi(playerListAdapter)
+//		subscribeUi(playerListAdapter)
+
+		val factory = InjectorUtils.provideTeamViewModelFactory(context!!, teamId, teamName)
+		teamDetailViewModel = ViewModelProviders.of(this, factory).get(TeamDetailViewModel::class.java)
+		viewDataBinding.viewModel = teamDetailViewModel
 	}
 
 	override fun onDestroyView() {
@@ -74,51 +55,12 @@ class TeamDetailFragment : Fragment() {
 	}
 
 	private fun subscribeUi(adapter: PlayerListAdapter) {
-//		val factory = InjectorUtils.provideTeamViewModelFactory(mContext, teamId, teamName)
-//		teamDetailViewModel = ViewModelProviders.of(this, factory).get(TeamDetailViewModel::class.java)
-		// TODO: ถามว่า มัน set ลงใน model ได้ไหม แล้วget ค่ามาshow ผ่าน ui
-//		viewDataBinding.apply {
-//			viewModel = teamDetailViewModel
-//		}
+//		teamDetailViewModel.getPlayers().observe(this, Observer { players ->
+//			Timber.e("result -> $players")
+//			if (players != null)
+//				adapter.values = players
+//		})
 
-		teamDetailViewModel.getTeam()
-			.observe(this, Observer { result ->
-				result?.let {
-					showToolBar(it)
-				}
-			})
-
-		teamDetailViewModel.getFlagURL()
-			.observe(this, Observer { result ->
-				result?.let {
-					showImgFlag(it)
-				}
-			})
-
-		teamDetailViewModel.getPlayers().observe(this, Observer { players ->
-			Timber.e("result -> $players")
-			if (players != null)
-				adapter.values = players
-		})
-
-	}
-
-	private fun showToolBar(team: Team) {
-		viewDataBinding.apply {
-			toolbarLayout.title = team.name
-		}
-	}
-
-	private fun showImgFlag(link: String) {
-		viewDataBinding.apply {
-			val imgOptions = RequestOptions()
-				.fitCenter()
-				.override(imgFlag.width, imgFlag.height)
-
-			requestBuilder.load(link)
-				.apply(imgOptions)
-				.into(imgFlag)
-		}
 	}
 
 	companion object {

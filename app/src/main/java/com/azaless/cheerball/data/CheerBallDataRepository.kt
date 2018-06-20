@@ -1,5 +1,6 @@
 package com.azaless.cheerball.data
 
+import com.azaless.cheerball.view.model.LeagueGroup
 import com.azaless.cheerball.view.model.Players
 import com.azaless.cheerball.view.model.Team
 import com.azaless.cheerball.view.model.Teams
@@ -16,6 +17,10 @@ class CheerBallDataRepository : CheerBallRepository {
 
 	override fun getTeams(eventId: Int): Observable<Teams> {
 		return CheerBallApi.create().getTeams(eventId)
+	}
+
+	override fun getLeagueGroup(eventId: Int): Observable<LeagueGroup> {
+		return CheerBallApi.create().getLeagueGroup(eventId)
 	}
 
 	companion object {

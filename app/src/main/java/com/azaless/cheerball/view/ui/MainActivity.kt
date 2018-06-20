@@ -67,7 +67,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 	override fun onNavigationItemSelected(item: MenuItem): Boolean {
 		val fragment : Fragment = when(item.itemId){
 			R.id.nav_groups -> {
-				GroupsBallFragment.newInstance()
+				GroupsBallFragment.newInstance(467)
 			}
 			R.id.nav_all_teams -> {
 				TeamsFragment.newInstance(467)

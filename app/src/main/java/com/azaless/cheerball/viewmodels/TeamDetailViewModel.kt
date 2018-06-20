@@ -13,12 +13,13 @@ import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
 
 class TeamDetailViewModel(private val cheerBallDataRepository: CheerBallDataRepository,
-                          private val teamId: Int,
-                          private val teamName: String) : ViewModel() {
+                          private val teamId: Int) : ViewModel() {
 	private val flagURL = MutableLiveData<String>()
 	private val team = MutableLiveData<Team>()
 	private val players = MutableLiveData<List<Player>>()
 	private val compositeDisposable: CompositeDisposable = CompositeDisposable()
+
+	val teamName = MutableLiveData<String>()
 
 	init {
 		compositeDisposable.clear()
@@ -56,6 +57,7 @@ class TeamDetailViewModel(private val cheerBallDataRepository: CheerBallDataRepo
 		override fun onNext(t: Team) {
 			team.value = t
 			flagURL.value = t.crestUrl
+			teamName.value = "POP"
 		}
 	}
 
