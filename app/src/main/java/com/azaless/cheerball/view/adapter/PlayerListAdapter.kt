@@ -8,27 +8,24 @@ import android.widget.TextView
 import com.azaless.cheerball.R
 import com.azaless.cheerball.view.model.Player
 
-class PlayerListAdapter : RecyclerView.Adapter<PlayerListAdapter.ViewHolder>(){
-	var values: List<Player> = ArrayList(0)
-		set(items) {
-			field = items
-			notifyDataSetChanged()
-		}
+class PlayerListAdapter : DataBindingAdapter<List<Player>, PlayerListAdapter.ViewHolder>() {
 
 	override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
 		return ViewHolder(LayoutInflater.from(parent.context)
 			.inflate(R.layout.list_item_player, parent, false))
 	}
 
-	override fun getItemCount() = values.size
+	override fun getItemCount() = values?.size ?: 0
 
 	override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-		holder.apply {
-			textViewName.text = values[position].name
-			textViewPosition.text = values[position].position
-			textViewNumber.text = values[position].jerseyNumber.toString()
-//			textViewAge.text = values[position].
-			textViewDateOfBirth.text = values[position].dateOfBirth
+		with(holder) {
+			values?.let { values ->
+				textViewName.text = values[position].name
+				textViewPosition.text = values[position].position
+				textViewNumber.text = values[position].jerseyNumber.toString()
+//			    textViewAge.text = values[position].
+				textViewDateOfBirth.text = values[position].dateOfBirth
+			}
 		}
 	}
 

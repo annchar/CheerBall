@@ -70,7 +70,7 @@
                     android:layout_height="match_parent"
                     app:adapterCustom="@{viewModel.adapter}"
                     app:adapterValue="@{viewModel.players}"
-                    app:layoutManager="android.support.v7.widget.LinearLayoutManager"
+                    app:layoutManagerCustom="@{viewModel.layoutManager}"
                     tools:ignore="MissingConstraints"
                     tools:layout_editor_absoluteX="16dp"
                     tools:listitem="@layout/list_item_player" />

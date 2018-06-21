@@ -6,9 +6,7 @@ import android.support.v7.widget.RecyclerView
 import android.widget.ImageView
 import com.azaless.cheerball.glide.GlideApp
 import com.azaless.cheerball.glide.SvgSoftwareLayerSetter
-import com.azaless.cheerball.view.model.Player
 import com.bumptech.glide.request.RequestOptions
-
 
 
 object BindingAdapters {
@@ -29,16 +27,28 @@ object BindingAdapters {
 		}
 	}
 
-	@BindingAdapter(value = ["adapterValue", "adapterCustom"], requireAll = true)
+	/**
+	 * Set intitial recyclerView
+	 */
+	@BindingAdapter("adapterCustom", "layoutManagerCustom")
 	@JvmStatic
-	fun setAdapterData(view: RecyclerView, bindingData: List<Player>?, adapter: PlayerListAdapter) {
-//		val itemAdapter = TeamListAdapter()
+	fun setAdapter(view: RecyclerView, adapter: DataBindingAdapter<*, *>, layoutManager: RecyclerView.LayoutManager) {
+		view.adapter = adapter
+		view.layoutManager = layoutManager
+	}
 
+	@BindingAdapter("adapterValue")
+	@JvmStatic
+	fun <T> setAdapterValue(view: RecyclerView, bindingData: T?) {
 		bindingData?.let {
-			view.adapter = adapter
-			adapter.values = bindingData
-			adapter.notifyDataSetChanged()
+			val dataBindingAdapter = view.adapter as DataBindingAdapter<T, RecyclerView.ViewHolder>
+			dataBindingAdapter.values = it
+			dataBindingAdapter.notifyDataSetChanged()
 		}
 	}
+
 }
 
+abstract class DataBindingAdapter<T, VH : RecyclerView.ViewHolder> : RecyclerView.Adapter<VH>() {
+	var values: T? = null
+}

@@ -5,6 +5,7 @@ import android.databinding.DataBindingUtil
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.app.AppCompatActivity
+import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -39,29 +40,19 @@ class TeamDetailFragment : Fragment() {
 	override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 		super.onViewCreated(view, savedInstanceState)
 
-//		val playerListAdapter = PlayerListAdapter()
-//		view.findViewById<RecyclerView>(R.id.recyclerViewPlayer).adapter = playerListAdapter
-
-
-//		subscribeUi(playerListAdapter)
-
 		val factory = InjectorUtils.provideTeamViewModelFactory(context!!, teamId, teamName)
 		teamDetailViewModel = ViewModelProviders.of(this, factory).get(TeamDetailViewModel::class.java)
 		viewDataBinding.viewModel = teamDetailViewModel
+
+		teamDetailViewModel.adapter.value = PlayerListAdapter()
+		val linearLayoutManager = LinearLayoutManager(this.context, LinearLayoutManager.VERTICAL, false)
+		linearLayoutManager.scrollToPosition(0)
+		teamDetailViewModel.layoutManager.value = linearLayoutManager
 	}
 
 	override fun onDestroyView() {
 		super.onDestroyView()
 		teamDetailViewModel.disposable()
-	}
-
-	private fun subscribeUi(adapter: PlayerListAdapter) {
-//		teamDetailViewModel.getPlayers().observe(this, Observer { players ->
-//			Timber.e("result -> $players")
-//			if (players != null)
-//				adapter.values = players
-//		})
-
 	}
 
 	companion object {
