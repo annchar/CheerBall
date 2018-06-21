@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.azaless.cheerball.view.ui.allteam
+package com.azaless.cheerball.view.ui.teams
 
 import android.arch.lifecycle.ViewModel
 import android.arch.lifecycle.ViewModelProvider

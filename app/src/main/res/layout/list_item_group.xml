@@ -57,7 +57,7 @@
                     app:layout_constraintTop_toBottomOf="@id/imgFlag"
                     tools:ignore="MissingConstraints"
                     tools:layout_editor_absoluteX="0dp"
-                    tools:listitem="@layout/list_item_all_team_little" />
+                    tools:listitem="@layout/list_item_team_small" />
 
             </LinearLayout>
         </LinearLayout>

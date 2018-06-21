@@ -12,7 +12,7 @@ import android.view.MenuItem
 import androidx.navigation.Navigation
 import androidx.navigation.ui.setupWithNavController
 import com.azaless.cheerball.R
-import com.azaless.cheerball.view.ui.allteam.TeamsFragment
+import com.azaless.cheerball.view.ui.teams.TeamsFragment
 import com.azaless.cheerball.view.ui.groupsball.GroupsBallFragment
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {

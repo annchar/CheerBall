@@ -24,7 +24,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".view.ui.team.TeamDetailActivity"
+        <activity android:name=".view.ui.teamdetail.TeamDetailActivity"
             android:parentActivityName=".view.ui.MainActivity"
             android:theme="@style/AppTheme.NoActionBar">
         <meta-data

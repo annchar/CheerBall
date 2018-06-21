@@ -18,7 +18,7 @@ class GroupBallItemAdapter : RecyclerView.Adapter<GroupBallItemAdapter.ViewHolde
 
 	override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
 		return ViewHolder(LayoutInflater.from(parent.context)
-			.inflate(R.layout.list_item_all_team_little, parent, false))
+			.inflate(R.layout.list_item_team_small, parent, false))
 	}
 
 	override fun getItemCount() = values.size

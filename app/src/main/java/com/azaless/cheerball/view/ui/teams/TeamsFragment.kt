@@ -1,4 +1,4 @@
-package com.azaless.cheerball.view.ui.allteam
+package com.azaless.cheerball.view.ui.teams
 
 import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
@@ -14,7 +14,7 @@ import com.azaless.cheerball.R
 import com.azaless.cheerball.databinding.FragmentTeamsBinding
 import com.azaless.cheerball.util.InjectorUtils
 import com.azaless.cheerball.view.adapter.TeamListAdapter
-import com.azaless.cheerball.view.ui.team.TeamDetailFragment
+import com.azaless.cheerball.view.ui.teamdetail.TeamDetailFragment
 import com.azaless.cheerball.viewmodels.TeamsViewModel
 
 class TeamsFragment: Fragment() {

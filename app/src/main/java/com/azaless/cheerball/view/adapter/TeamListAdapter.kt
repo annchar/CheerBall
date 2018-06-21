@@ -13,8 +13,8 @@ import com.azaless.cheerball.glide.GlideApp
 import com.azaless.cheerball.glide.SvgSoftwareLayerSetter
 import com.azaless.cheerball.util.AppUtil
 import com.azaless.cheerball.view.model.Team
-import com.azaless.cheerball.view.ui.team.TeamDetailActivity
-import com.azaless.cheerball.view.ui.team.TeamDetailFragment
+import com.azaless.cheerball.view.ui.teamdetail.TeamDetailActivity
+import com.azaless.cheerball.view.ui.teamdetail.TeamDetailFragment
 import com.bumptech.glide.RequestBuilder
 import com.bumptech.glide.request.RequestOptions
 
@@ -40,7 +40,7 @@ class TeamListAdapter : RecyclerView.Adapter<TeamListAdapter.ViewHolder>(){
 
 	override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
 		return ViewHolder(LayoutInflater.from(parent.context)
-			.inflate(R.layout.list_item_all_team, parent, false))
+			.inflate(R.layout.list_item_team_big, parent, false))
 	}
 
 	override fun getItemCount() = values.size

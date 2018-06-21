@@ -1,4 +1,4 @@
-package com.azaless.cheerball.view.ui.team
+package com.azaless.cheerball.view.ui.teamdetail
 
 import android.arch.lifecycle.ViewModelProviders
 import android.databinding.DataBindingUtil
@@ -10,14 +10,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.azaless.cheerball.R
-import com.azaless.cheerball.databinding.FragmentTeamBinding
+import com.azaless.cheerball.databinding.FragmentTeamDetailBinding
 import com.azaless.cheerball.util.InjectorUtils
 import com.azaless.cheerball.view.adapter.PlayerListAdapter
 import com.azaless.cheerball.viewmodels.TeamDetailViewModel
 
 
 class TeamDetailFragment : Fragment() {
-	private lateinit var viewDataBinding: FragmentTeamBinding
+	private lateinit var viewDataBinding: FragmentTeamDetailBinding
 	private lateinit var teamDetailViewModel: TeamDetailViewModel
 
 	private var teamId: Int = 0
@@ -27,7 +27,7 @@ class TeamDetailFragment : Fragment() {
 		teamId = requireNotNull(arguments).getInt(ARG_TEAM_ID)
 		teamName = requireNotNull(arguments).getString(ARG_TEAM_NAME)
 
-		viewDataBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_team, container, false)
+		viewDataBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_team_detail, container, false)
 		viewDataBinding.setLifecycleOwner(this)
 
 		val appCompatActivity = requireActivity() as AppCompatActivity

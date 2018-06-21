@@ -2,9 +2,9 @@ package com.azaless.cheerball.util
 
 import android.content.Context
 import com.azaless.cheerball.data.CheerBallDataRepository
-import com.azaless.cheerball.view.ui.allteam.TeamsViewModelFactory
+import com.azaless.cheerball.view.ui.teams.TeamsViewModelFactory
 import com.azaless.cheerball.view.ui.groupsball.GroupsBallViewModelFactory
-import com.azaless.cheerball.view.ui.team.TeamDetailViewModelFactory
+import com.azaless.cheerball.view.ui.teamdetail.TeamDetailViewModelFactory
 
 object InjectorUtils {
 	fun provideTeamViewModelFactory(
