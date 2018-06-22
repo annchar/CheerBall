@@ -26,6 +26,11 @@ class GroupBallItemAdapter : RecyclerView.Adapter<GroupBallItemAdapter.ViewHolde
 	override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 		holder.apply {
 			textViewName.text = values[position].team
+			textViewRank.text = values[position].rank.toString()
+			textViewPoints.text = values[position].points.toString()
+			textViewGoals.text = values[position].goals.toString()
+			textViewGoalsAgainst.text = values[position].goalsAgainst.toString()
+
 			BindingAdapters.loadImage(imgFlag, values[position].crestURI)
 		}
 	}
@@ -33,5 +38,9 @@ class GroupBallItemAdapter : RecyclerView.Adapter<GroupBallItemAdapter.ViewHolde
 	class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 		val imgFlag: ImageView = itemView.findViewById(R.id.imgFlag)
 		val textViewName: TextView = itemView.findViewById(R.id.textViewName)
+		val textViewRank: TextView = itemView.findViewById(R.id.textViewRank)
+		val textViewPoints: TextView = itemView.findViewById(R.id.textViewPoints)
+		val textViewGoals: TextView = itemView.findViewById(R.id.textViewGoals)
+		val textViewGoalsAgainst: TextView = itemView.findViewById(R.id.textViewGoalsAgainst)
 	}
 }
