@@ -9,7 +9,6 @@ import com.azaless.cheerball.view.model.LeagueGroup
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
-import timber.log.Timber
 
 class GroupsBallViewModel(private val cheerBallDataRepository: CheerBallDataRepository,
                           private val eventId: Int) : ViewModel() {
@@ -35,7 +34,6 @@ class GroupsBallViewModel(private val cheerBallDataRepository: CheerBallDataRepo
 	private inner class LeagueGroupObserver : DefaultObserver<LeagueGroup>() {
 		override fun onNext(t: LeagueGroup) {
 			leagueGroup.value = t
-			Timber.e("leagueGroup : ${t}")
 		}
 	}
 

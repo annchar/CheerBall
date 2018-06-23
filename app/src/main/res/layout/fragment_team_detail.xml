@@ -75,14 +75,7 @@
                     tools:ignore="MissingConstraints"
                     tools:layout_editor_absoluteX="16dp"
                     tools:listitem="@layout/list_item_player" />
-
-                <EditText
-                    android:id="@+id/textViewTeamName"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@color/colorPrimaryDark"
-                    android:padding="@dimen/margin_medium"
-                    android:text="@{viewModel.teamName}" />
+                
             </android.support.constraint.ConstraintLayout>
 
         </android.support.v4.widget.NestedScrollView>

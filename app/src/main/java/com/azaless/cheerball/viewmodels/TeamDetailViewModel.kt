@@ -61,7 +61,6 @@ class TeamDetailViewModel(private val cheerBallDataRepository: CheerBallDataRepo
 		override fun onNext(t: Team) {
 			team.value = t
 			flagURL.value = t.crestUrl
-			teamName.value = "POP"
 		}
 	}
 
