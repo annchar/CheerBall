@@ -1,4 +1,4 @@
-package com.azaless.cheerball.glide
+package com.azaless.cheerball.util.glide
 
 import com.bumptech.glide.load.Options
 import com.bumptech.glide.load.ResourceDecoder

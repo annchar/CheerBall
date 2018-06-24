@@ -1,4 +1,4 @@
-package com.azaless.cheerball.glide
+package com.azaless.cheerball.util.glide
 
 import android.graphics.drawable.PictureDrawable
 import android.widget.ImageView

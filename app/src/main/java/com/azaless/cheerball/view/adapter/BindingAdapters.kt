@@ -4,8 +4,8 @@ import android.databinding.BindingAdapter
 import android.graphics.drawable.PictureDrawable
 import android.support.v7.widget.RecyclerView
 import android.widget.ImageView
-import com.azaless.cheerball.glide.GlideApp
-import com.azaless.cheerball.glide.SvgSoftwareLayerSetter
+import com.azaless.cheerball.util.glide.GlideApp
+import com.azaless.cheerball.util.glide.SvgSoftwareLayerSetter
 import com.bumptech.glide.request.RequestOptions
 
 

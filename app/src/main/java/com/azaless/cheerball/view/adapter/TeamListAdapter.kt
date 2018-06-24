@@ -9,8 +9,8 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import com.azaless.cheerball.R
-import com.azaless.cheerball.glide.GlideApp
-import com.azaless.cheerball.glide.SvgSoftwareLayerSetter
+import com.azaless.cheerball.util.glide.GlideApp
+import com.azaless.cheerball.util.glide.SvgSoftwareLayerSetter
 import com.azaless.cheerball.util.AppUtil
 import com.azaless.cheerball.view.model.Team
 import com.azaless.cheerball.view.ui.teamdetail.TeamDetailActivity
