@@ -1,8 +1,8 @@
 package com.azaless.cheerball.viewmodels
 
-import android.arch.lifecycle.LiveData
-import android.arch.lifecycle.MutableLiveData
-import android.arch.lifecycle.ViewModel
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
 import com.azaless.cheerball.data.CheerBallDataRepository
 import com.azaless.cheerball.data.DefaultObserver
 import com.azaless.cheerball.view.model.Teams
@@ -28,7 +28,7 @@ class TeamsViewModel(private val cheerBallDataRepository: CheerBallDataRepositor
 		compositeDisposable.add(teamsDisposable)
 	}
 
-	fun getTeams(): LiveData<Teams>{
+	fun getTeams(): LiveData<Teams> {
 		return  teams
 	}
 

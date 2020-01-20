@@ -1,9 +1,9 @@
 package com.azaless.cheerball.viewmodels
 
-import android.arch.lifecycle.LiveData
-import android.arch.lifecycle.MutableLiveData
-import android.arch.lifecycle.ViewModel
-import android.support.v7.widget.RecyclerView
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
+import androidx.recyclerview.widget.RecyclerView
 import com.azaless.cheerball.data.CheerBallDataRepository
 import com.azaless.cheerball.data.DefaultObserver
 import com.azaless.cheerball.view.adapter.PlayerListAdapter

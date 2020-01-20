@@ -1,8 +1,8 @@
 package com.azaless.cheerball.viewmodels
 
-import android.arch.lifecycle.LiveData
-import android.arch.lifecycle.MutableLiveData
-import android.arch.lifecycle.ViewModel
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
 import com.azaless.cheerball.data.CheerBallDataRepository
 import com.azaless.cheerball.data.DefaultObserver
 import com.azaless.cheerball.view.model.LeagueGroup
@@ -27,7 +27,7 @@ class GroupsBallViewModel(private val cheerBallDataRepository: CheerBallDataRepo
 		compositeDisposable.add(leagueGroupDisposable)
 	}
 
-	fun getLeagueGroup(): LiveData<LeagueGroup>{
+	fun getLeagueGroup(): LiveData<LeagueGroup> {
 		return  leagueGroup
 	}
 

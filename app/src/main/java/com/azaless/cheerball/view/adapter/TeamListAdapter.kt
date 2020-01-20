@@ -2,19 +2,19 @@ package com.azaless.cheerball.view.adapter
 
 import android.content.Intent
 import android.graphics.drawable.PictureDrawable
-import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.recyclerview.widget.RecyclerView
 import com.azaless.cheerball.R
-import com.azaless.cheerball.util.glide.GlideApp
 import com.azaless.cheerball.util.glide.SvgSoftwareLayerSetter
 import com.azaless.cheerball.util.AppUtil
 import com.azaless.cheerball.view.model.Team
 import com.azaless.cheerball.view.ui.teamdetail.TeamDetailActivity
 import com.azaless.cheerball.view.ui.teamdetail.TeamDetailFragment
+import com.bumptech.glide.Glide
 import com.bumptech.glide.RequestBuilder
 import com.bumptech.glide.request.RequestOptions
 
@@ -68,7 +68,7 @@ class TeamListAdapter : RecyclerView.Adapter<TeamListAdapter.ViewHolder>(){
 		val imgFlag: ImageView = itemView.findViewById(R.id.imgFlag)
 
 		val requestBuilder: RequestBuilder<PictureDrawable>  by lazy {
-			GlideApp.with(itemView.context)
+			Glide.with(itemView.context)
 				.`as`(PictureDrawable::class.java)
 				.listener(SvgSoftwareLayerSetter())
 		}

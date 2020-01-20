@@ -16,8 +16,8 @@
 
 package com.azaless.cheerball.view.ui.groupsball
 
-import android.arch.lifecycle.ViewModel
-import android.arch.lifecycle.ViewModelProvider
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
 import com.azaless.cheerball.data.CheerBallDataRepository
 import com.azaless.cheerball.viewmodels.GroupsBallViewModel
 

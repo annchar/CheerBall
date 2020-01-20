@@ -1,15 +1,15 @@
 package com.azaless.cheerball.view.ui.groupsball
 
-import android.arch.lifecycle.Observer
-import android.arch.lifecycle.ViewModelProviders
 import android.content.Context
-import android.databinding.DataBindingUtil
 import android.os.Bundle
-import android.support.v4.app.Fragment
-import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProviders
+import androidx.recyclerview.widget.RecyclerView
 import com.azaless.cheerball.R
 import com.azaless.cheerball.databinding.FragmentGroupsBallBinding
 import com.azaless.cheerball.util.InjectorUtils
@@ -45,10 +45,9 @@ class GroupsBallFragment: Fragment() {
 	private fun subscribeUi(adapter: GroupBallListAdapter) {
 		mGroupsBallViewModel.getLeagueGroup()
 			.observe(this, Observer { leagueGroup ->
-				if (leagueGroup != null)
-					leagueGroup.standings?.let {
-						adapter.value = it
-					}
+				leagueGroup?.standings?.let {
+					adapter.value = it
+				}
 			})
 
 	}

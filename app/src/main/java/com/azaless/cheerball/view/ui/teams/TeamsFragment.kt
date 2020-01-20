@@ -1,15 +1,15 @@
 package com.azaless.cheerball.view.ui.teams
 
-import android.arch.lifecycle.Observer
-import android.arch.lifecycle.ViewModelProviders
 import android.content.Context
-import android.databinding.DataBindingUtil
 import android.os.Bundle
-import android.support.v4.app.Fragment
-import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProviders
+import androidx.recyclerview.widget.RecyclerView
 import com.azaless.cheerball.R
 import com.azaless.cheerball.databinding.FragmentTeamsBinding
 import com.azaless.cheerball.util.InjectorUtils
@@ -46,10 +46,9 @@ class TeamsFragment: Fragment() {
 	private fun subscribeUi(adapter: TeamListAdapter) {
 		mTeamsViewModel.getTeams()
 			.observe(this, Observer { teams ->
-				if (teams != null)
-					teams.teams?.let {
-						adapter.values = it
-					}
+				teams?.teams?.let {
+					adapter.values = it
+				}
 			})
 	}
 

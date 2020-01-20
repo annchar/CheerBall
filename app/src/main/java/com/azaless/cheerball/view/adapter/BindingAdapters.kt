@@ -1,11 +1,11 @@
 package com.azaless.cheerball.view.adapter
 
-import android.databinding.BindingAdapter
 import android.graphics.drawable.PictureDrawable
-import android.support.v7.widget.RecyclerView
 import android.widget.ImageView
-import com.azaless.cheerball.util.glide.GlideApp
+import androidx.databinding.BindingAdapter
+import androidx.recyclerview.widget.RecyclerView
 import com.azaless.cheerball.util.glide.SvgSoftwareLayerSetter
+import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 
 
@@ -18,7 +18,7 @@ object BindingAdapters {
 				.fitCenter()
 				.override(imageView.width, imageView.height)
 
-			GlideApp.with(imageView.context)
+			Glide.with(imageView.context)
 				.`as`(PictureDrawable::class.java)
 				.listener(SvgSoftwareLayerSetter())
 				.load(imageUrl)

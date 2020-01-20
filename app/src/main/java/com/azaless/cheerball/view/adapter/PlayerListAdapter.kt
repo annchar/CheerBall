@@ -1,9 +1,9 @@
 package com.azaless.cheerball.view.adapter
 
-import android.databinding.DataBindingUtil
-import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
+import androidx.recyclerview.widget.RecyclerView
 import com.azaless.cheerball.R
 import com.azaless.cheerball.databinding.ListItemPlayerBinding
 import com.azaless.cheerball.view.model.Player

@@ -2,18 +2,18 @@ package com.azaless.cheerball.view.ui
 
 import android.content.res.Configuration
 import android.os.Bundle
-import android.support.design.widget.NavigationView
-import android.support.v4.app.Fragment
-import android.support.v4.view.GravityCompat
-import android.support.v4.widget.DrawerLayout
-import android.support.v7.app.ActionBarDrawerToggle
-import android.support.v7.app.AppCompatActivity
 import android.view.MenuItem
+import androidx.appcompat.app.ActionBarDrawerToggle
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.GravityCompat
+import androidx.drawerlayout.widget.DrawerLayout
+import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
 import androidx.navigation.ui.setupWithNavController
 import com.azaless.cheerball.R
 import com.azaless.cheerball.view.ui.teams.TeamsFragment
 import com.azaless.cheerball.view.ui.groupsball.GroupsBallFragment
+import com.google.android.material.navigation.NavigationView
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 	private lateinit var drawerLayout: DrawerLayout
@@ -59,7 +59,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 		drawerToggle.syncState()
 	}
 
-	override fun onConfigurationChanged(newConfig: Configuration?) {
+	override fun onConfigurationChanged(newConfig: Configuration) {
 		super.onConfigurationChanged(newConfig)
 		drawerToggle.onConfigurationChanged(newConfig)
 	}
