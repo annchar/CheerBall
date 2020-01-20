@@ -1,52 +1,44 @@
+# Windows thumbnail db
+Thumbs.db
 
-\.idea/workspace\.xml
+# OSX files
+.DS_Store
 
-\.gradle/4\.6/fileHashes/fileHashes\.bin
+# built application files
+*.apk
+*.ap_
 
-\.gradle/4\.6/fileHashes/fileHashes\.lock
+# files for the dex VM
+*.dex
+  
+# Java class files
+*.class
+  
+# generated files
+bin/
+gen/
+build/
+  
+# Local configuration file (sdk path, etc)
+local.properties
+fabric.properties
+sign.properties
 
-\.gradle/4\.6/fileHashes/resourceHashesCache\.bin
+# Eclipse project files
+.classpath
+.project
 
-\.gradle/4\.6/taskHistory/taskHistory\.bin
-
-\.gradle/4\.6/taskHistory/taskHistory\.lock
-
-\.gradle/buildOutputCleanup/buildOutputCleanup\.lock
-
-\.idea/navEditor\.xml
-
-app/app\.iml
-
-CheerBall\.iml
-
-\.idea/caches/build_file_checksums\.ser
-
-\.idea/libraries/Gradle__com_caverock_androidsvg_1_2_1_jar\.xml
-
-\.idea/libraries/Gradle__com_github_bumptech_glide_annotations_4_7_1_jar\.xml
-
-\.idea/libraries/Gradle__com_github_bumptech_glide_disklrucache_4_7_1_jar\.xml
-
-\.idea/libraries/Gradle__com_github_bumptech_glide_gifdecoder_4_7_1\.xml
-
-\.idea/libraries/Gradle__com_github_bumptech_glide_glide_4_7_1\.xml
-
-\.idea/libraries/Gradle__com_jakewharton_timber_timber_4_7_0\.xml
-
-\.idea/libraries/Gradle__com_squareup_okhttp3_logging_interceptor_3_10_0_jar\.xml
-
-\.idea/libraries/Gradle__com_squareup_okhttp3_okhttp_3_10_0_jar\.xml
-
-\.idea/libraries/Gradle__com_squareup_okio_okio_1_14_0_jar\.xml
-
-\.idea/libraries/Gradle__com_squareup_retrofit2_adapter_rxjava2_2_4_0_jar\.xml
-
-\.idea/libraries/Gradle__com_squareup_retrofit2_converter_gson_2_4_0_jar\.xml
-
-\.idea/libraries/Gradle__com_squareup_retrofit2_retrofit_2_4_0_jar\.xml
-
-\.idea/libraries/Gradle__io_reactivex_rxjava2_rxandroid_2_0_2\.xml
-
-\.idea/libraries/Gradle__io_reactivex_rxjava2_rxjava_2_1_9_jar\.xml
-
-\.idea/libraries/Gradle__org_reactivestreams_reactive_streams_1_0_2_jar\.xml
+# Android Studio
+.idea
+.gradle
+/*/local.properties
+/*/out
+/*/*/build
+build
+captures
+/*/*/production
+*.iml
+*.iws
+*.ipr
+*~
+*.swp
