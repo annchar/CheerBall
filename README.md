@@ -8,6 +8,9 @@ CheerBall is Android application about show data of FIFA World Cup 2018 for lear
 
 ![MacDown logo](https://media.giphy.com/media/LWGkNE4VAe93YLl9Y7/giphy.gif)
 
+<p align="center">
+<img src="./screenshot/cheerball.gif" width="500" height="800" />
+</p>
 
 ## License
 
