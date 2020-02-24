@@ -6,8 +6,6 @@ CheerBall is Android application about show data of FIFA World Cup 2018 for lear
 
 **API** : https://api.football-data.org/docs/v1/index.html
 
-![MacDown logo](https://media.giphy.com/media/LWGkNE4VAe93YLl9Y7/giphy.gif)
-
 <p align="center">
 <img src="./screenshot/cheerball.gif" width="500" height="800" />
 </p>
@@ -17,7 +15,7 @@ CheerBall is Android application about show data of FIFA World Cup 2018 for lear
 ```
 MIT License
 
-Copyright (c) 2017 ChanoknadM
+Copyright (c) 2018 ChanoknadM
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
